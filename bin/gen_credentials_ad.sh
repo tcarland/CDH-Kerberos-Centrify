@@ -168,6 +168,10 @@ if [ -f $RHEL_FILE ]; then
   set -e
 fi
 
+# SLEEP=1 is probably a good idea with Centrify. SLEEP=25 was needed for 
+# Azure-based deployment with on-prem Centrify
+
+
 ## Modified to use centrify 'adkeytab'
 #
 # Export password to keytab
