@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
 # Copyright (c) 2014 Cloudera, Inc. All rights reserved.
-
+#
 # Modified by Timothy C. Arland <tarland@trace3.com>
 #  Dec 2017, to work with Centrify
-# Trick is to use Centrify for kerberos tools, but
+#
+# The trick is to use Centrify for kerberos tools, but
 # only use 'openldap-clients' for ldap commands.
+# Ideally, to avoid conflicts, do NOT install the 
+# krb5-workstation and krb5-libs packages.
+# We override the path for Centrify and explicitly set 
+# the OS path for openldap-clients.
 
 set -e
 set -x
