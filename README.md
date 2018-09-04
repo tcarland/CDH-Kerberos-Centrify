@@ -16,16 +16,16 @@ Manager's Kerberos wizard.
 There are a few options for configuring Kerberos in CDH with Centrify, but certainly
 the path of least resistance is to allow Cloudera Manager to manage the 
 creation and deletion of all service principals via the Kerberos Wizard. 
-For this to work as designed with Centrify, a few minor changes to Cloudera's kerberos 
-scripts are needed.
+For this to work as designed with Centrify, a few minor changes to Cloudera's 
+kerberos scripts are needed.
 
-This project provides modified CDH scripts for supporting use of Centrify 
-by Cloudera Manager 5.12 (and 13) and the Kerberos Wizard.  
+This project provides modified cloudera scripts for supporting use of Centrify 
+in Cloudera Manager's Kerberos Wizard, tested against versions 5.12 through 5.15.
 
 The needed script changes result from the following issues:
 
  * MIT Kerberos tools (kinit, etc) do not work with Centrify.
- * Centrify's LDAP tools do not work with CDH's openldap usage.
+ * Centrify's LDAP tools do not work with CDH's *openldap* usage.
 
 
 #### Installation
@@ -42,17 +42,17 @@ tools should NOT be installed as requested.
  * Ubuntu's package is *krb5-user* 
 
 These packages should be removed if they already exist. Additionally, while Centrify
-installations add some of its own tools to the system path, ensure the kerberos tools
-(commonly /usr/share/centrify/kerberos) are also on the system path.
+installations add some of its own tools to the system path, ensure the kerberos 
+tools (commonly /usr/share/centrify/kerberos) are also on the system path.
 
 Per Cloudera's documentation, the *openldap-clients* package should be installed as
 Centrify's openldap tools do not work with the scripts. The versions provided here
 have hardcoded the openldap binary, which probably is not the best choice, but does 
 the job.
 
-Also note that Active Directory creates default principals for a newly provisioned 
-OU, such as HTTP, SMB, and NFS. The HTTP principal will absolutely collide with 
-Cloudera Manager's attempts to create its own HTTP principals, and should be 
+Also note that Centrify creates default principals for a newly provisioned 
+OU, such as HTTP, CIFS, and NFS. The HTTP principal will **absolutely** collide 
+with Cloudera Manager's attempts to create its own HTTP principals, and should be 
 deleted prior to running the CM Kerberos Wizerd. This can be done at the host level,
 per host, by running the following priviledged command:
 
@@ -61,6 +61,7 @@ per host, by running the following priviledged command:
 ```
 
 Lastly, once the cluster is ready to be kerberized (via the CM Kerberos Wizard), 
-replace the scripts in */usr/share/cmf/bin* with the scripts from *./bin/*
+replace the scripts in */usr/share/cmf/bin* on the Cloudera Manager host(s) with 
+the scripts from *./bin/*
 
 
