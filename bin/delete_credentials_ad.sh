@@ -3,8 +3,8 @@
 # Copyright (c) 2017 Cloudera, Inc. All rights reserved.
 
 # Modified by tarland@trace3.com to work with Centrify
-# Trick is to use Centrify for kerberos tools, but 
-# only use 'openldap-clients' for ldap commands.
+# Trick is to use Centrify for kerberos tools, but
+# use 'openldap-clients' for ldap commands.
 
 set -e
 set -x
