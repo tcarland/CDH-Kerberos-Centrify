@@ -10,7 +10,7 @@ set -e
 set -x
 
 # Explicitly add Centrify locations to path
-export PATH=/usr/share/centrifydc/kerberos/bin:/usr/share/centrifydc/bin:$PATH
+export PATH=/usr/share/centrifydc/kerberos/bin:/usr/share/centrifydc/kerberos/sbin:/usr/share/centrifydc/bin:$PATH
 
 
 KTUTIL_BIN=/usr/share/centrifydc/kerberos/sbin/ktutil
@@ -25,5 +25,4 @@ $(for KEYTAB_IN in "$@"; do echo "rkt $KEYTAB_IN"; done)
 wkt $KEYTAB_OUT
 EOF
 
-chmod 600 $KEYTAB_OUT 
-
+chmod 600 $KEYTAB_OUT
